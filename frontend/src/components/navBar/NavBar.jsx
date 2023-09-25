@@ -1,52 +1,64 @@
 import { Link } from "react-router-dom";
 import "./NavBar.scss";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
 function NavBar() {
   const [show, setShow] = useState(false);
   const { user, dispatch } = useContext(AuthContext);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
+    localStorage.removeItem("user");
+    setIsLoggedIn(false);
   };
 
+
+  useEffect(() => {
+    const token = localStorage.getItem("user");
+    if(token === "null" || token === null) 
+      setIsLoggedIn(false);
+    else setIsLoggedIn(true);
+  }, [])
+ 
+
   return (
-    <div class="navBar">
-      <div class="navBarComponent">
-        <div class="left">
-          <Link to="/" class="link">
+    <div className="navBar">
+      <div className="navBarComponent">
+        <div className="left">
+          <Link to="/" className="link">
             <h1>TenantSystem</h1>
           </Link>
         </div>
-        <div class="middle">
-          <Link to="/" class="link">
+        <div className="middle">
+          <Link to="/" className="link">
             <span>Home</span>
           </Link>
-          <Link to="/aboutUs" class="link">
+          <Link to="/aboutUs" className="link">
             <span>About Us</span>
           </Link>
-          <Link to="/contactUs" class="link">
+          <Link to="/contactUs" className="link">
             <span>Contact Us</span>
           </Link>
-          <Link to="/services" class="link">
+          <Link to="/services" className="link">
             <span>Services</span>
           </Link>
-          <Link to="/upload" class="link">
-            <span>Upload</span>
-          </Link>
+{        isLoggedIn &&  <Link to="/upload" className="link">
+             <span>Upload</span>
+          </Link>}
         </div>
-        <div class="right">
+        <div className="right">
           {user ? (
             <>
-              <div class="userImg">
-                <img
+              <div className="userImg">
+                {/* <img
                   src="https://images.pexels.com/photos/8978566/pexels-photo-8978566.jpeg?auto=compress&cs=tinysrgb&w=800"
                   alt=""
                   onClick={() => setShow(!show)}
-                />
+                /> */}
               </div>
-              <div class="user">
+              <div className="user">
                 <p onClick={() => setShow(!show)}>{user.username}</p>
 
                 {show ? (
@@ -84,19 +96,19 @@ function NavBar() {
                 )}
               </div>
               {show && (
-                <div class="dropMenu">
-                  <p>Settings</p>
-                  <hr />
+                <div className="dropMenu">
+                  {/* <p>Settings</p> */}
+                  {/* <hr /> */}
                   <p onClick={handleLogout}>Logout</p>
                 </div>
               )}
             </>
           ) : (
             <>
-              <Link to="/signIn" class="link">
+              <Link to="/signIn" className="link">
                 <span>SIGN IN</span>
               </Link>
-              <Link to="/signUp" class="link">
+              <Link to="/signUp" className="link">
                 <span>REGISTER</span>
               </Link>
             </>

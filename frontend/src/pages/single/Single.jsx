@@ -9,6 +9,7 @@ function Single() {
   const [post, setPost] = useState({});
 
   const location = useLocation();
+  const createdAt = post.createdAt;
 
   const id = location.pathname.split("/")[2];
 
@@ -20,14 +21,14 @@ function Single() {
     getData();
   }, [id]);
 
+  // console.log("post", process.env.REACT_APP_BACKEND_URL)
   return (
     <>
       <NavBar />
-      <div class="single">
-        <div class="singleContainer" key={post._id}>
-          <div class="imageContainer">
-            {post.photo &&
-              post.photo.map((i) => <img src={i} alt="" key={i} />)}
+      <div className="single">
+        <div className="singleContainer" key={post._id}>
+          <div className="imageContainer">
+            <img src={`${process.env.REACT_APP_BACKEND_URL || ""}/${post.photo}`} alt="" />
           </div>
           <p>
             Category:{" "}
@@ -40,7 +41,7 @@ function Single() {
           <span>
             Price:{" "}
             <strong style={{ color: "darkGreen" }}>
-              {post.price} TZS per month
+              {post.price} Rs per month
             </strong>
           </span>
           <span>
@@ -49,7 +50,7 @@ function Single() {
           <span>
             Status: <strong style={{ color: "green" }}>{post.status}</strong>
           </span>
-          <div class="location">
+          <div className="location">
             <span>
               City: <strong style={{ color: "brown" }}>{post.city}</strong>
             </span>
@@ -62,12 +63,12 @@ function Single() {
             </span>
           </div>
           <span>
-            Uploaded By: <strong style={{ color: "Teal" }}>James</strong>
+            Uploaded By: <strong style={{ color: "Teal" }}>{post.username}</strong>
           </span>
           <span>
             Time uploaded:{" "}
             <strong style={{ color: "gray" }}>
-              {new Date(post.createdAt).toDateString()}
+              {post.timestamp}
             </strong>
           </span>
           <button>Book Now</button>

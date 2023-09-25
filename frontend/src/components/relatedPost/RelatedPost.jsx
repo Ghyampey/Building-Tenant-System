@@ -26,17 +26,17 @@ function RelatedPost({ category, city, district, street }) {
   }, [category, city, district, street]);
 
   return (
-    <div class="related">
+    <div className="related">
       <h1>Related Post..</h1>
-      <div class="relatedContainer">
-        {relatedPost.map((item) => (
-          <div class="middle">
-            <Link to={`/services/${item._id}`} key={item._id} class="link">
-              <div class="middleContainer" key={item._id}>
+      <div className="relatedContainer">
+        {Array.isArray(relatedPost) && relatedPost.map((item) => (
+          <div className="middle">
+            <Link to={`/services/${item._id}`} key={item._id} className="link">
+              <div className="middleContainer" key={item._id}>
                 {item.photo && (
-                  <div class="imageContainer">
-                    {item.photo.map((i) => (
-                      <img src={i} alt="" key={i} />
+                  <div className="imageContainer">
+                    {Array.isArray(item.photo) && item.photo.map((i) => (
+                      <img src={`${process.env.REACT_APP_BACKEND_URL || ""}/${i}`} alt="" key={i} />
                     ))}
                   </div>
                 )}
@@ -52,7 +52,7 @@ function RelatedPost({ category, city, district, street }) {
                 <span>
                   Price:{" "}
                   <strong style={{ color: "darkGreen" }}>
-                    {item.price} TZS per month
+                    {item.price} Rs per month
                   </strong>
                 </span>
                 <span>
@@ -62,7 +62,7 @@ function RelatedPost({ category, city, district, street }) {
                   Status:{" "}
                   <strong style={{ color: "green" }}>{item.status}</strong>
                 </span>
-                <div class="location">
+                <div className="location">
                   <span>
                     City:{" "}
                     <strong style={{ color: "brown" }}>{item.city}</strong>
@@ -77,12 +77,12 @@ function RelatedPost({ category, city, district, street }) {
                   </span>
                 </div>
                 <span>
-                  Uploaded By: <strong style={{ color: "Teal" }}>James</strong>
+                  Uploaded By: <strong style={{ color: "Teal" }}>{item.username}</strong>
                 </span>
                 <span>
                   Time uploaded:{" "}
                   <strong style={{ color: "gray" }}>
-                    {new Date(item.createdAt).toDateString()}
+                    {item.timestamp}
                   </strong>
                 </span>
                 <button>View Description</button>

@@ -4,12 +4,12 @@ function Footer() {
   return (
     <div class="footer">
       <div class="footerContainer">
-        <hr />
+        {/* <hr /> */}
         <div class="fContainer">
-          <div class="fContainerList">
+          {/* <div class="fContainerList">
             <h1>Categories</h1>
             <span>Apartment</span>
-            <span>Apartment</span>
+            <span>A</span>
             <span>Apartment</span>
             <span>Apartment</span>
           </div>
@@ -33,9 +33,9 @@ function Footer() {
             <span>Apartment</span>
             <span>Apartment</span>
             <span>Apartment</span>
-          </div>
+          </div> */}
         </div>
-        <hr />
+        {/* <hr /> */}
         <div class="footerList">
           <div class="list">
             <h1>TenantSystem</h1>

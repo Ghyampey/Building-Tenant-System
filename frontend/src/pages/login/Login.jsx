@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState , useEffect } from "react";
 import NavBar from "../../components/navBar/NavBar";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
@@ -28,6 +28,7 @@ function Login() {
         "http://localhost:3000/api/auth/login",
         credentials
       );
+    
 
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
       navigate("/");
@@ -36,6 +37,34 @@ function Login() {
     }
   };
 
+  
+
+// const Navbar = () => {
+//   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+//   // Check user authentication status on component mount
+//   useEffect(() => {
+//     const token = localStorage.getItem('authToken'); // Assuming you store the token in localStorage
+//     if (token) {
+//       setIsLoggedIn(true);
+//     } else {
+//       setIsLoggedIn(false);
+//     }
+//   }, []);
+
+//   return (
+//     <nav>
+//       <ul>
+//         <li>Home</li>
+//         {isLoggedIn && <li>Upload</li>}
+//         {!isLoggedIn && <li>Login</li>}
+//         {isLoggedIn && <li>Logout</li>}
+//       </ul>
+//     </nav>
+//   );
+// };
+
+
   return (
     <>
       <NavBar />
@@ -43,7 +72,7 @@ function Login() {
         <div class="registerContainer">
           <div class="left">
             <img
-              src="https://images.pexels.com/photos/8962339/pexels-photo-8962339.jpeg?auto=compress&cs=tinysrgb&w=800"
+              src="https://imgs.search.brave.com/_qbkAcVGpJIA0NyThAg_NAbS4oVGtstFSePwFp6sUkE/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTcy/NzkzOTYzL3Bob3Rv/L2NhbGlmb3JuaWEt/Zm9yLXJlbnQtcmVh/bC1lc3RhdGUtc2ln/bi5qcGc_cz02MTJ4/NjEyJnc9MCZrPTIw/JmM9XzNUdkQzaml1/V0o5ZGg0ekpjaGc0/amhqYjBpWnlueDM5/X05NclRXSHZTQT0"
               alt=""
             />
           </div>

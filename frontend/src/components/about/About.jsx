@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./About.scss";
 
 function About() {
@@ -6,22 +7,24 @@ function About() {
       <div class="aboutContainer">
         <div class="left">
           <img
-            src="https://images.pexels.com/photos/8978563/pexels-photo-8978563.jpeg?auto=compress&cs=tinysrgb&w=800"
+            src="https://t3.ftcdn.net/jpg/02/95/84/32/360_F_295843256_DHhyqcBH43tjGliKCvWpjLFivbBkanNe.jpg"
             alt=""
           />
         </div>
         <div class="right">
           <h1>About Us</h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
-            sit id animi repudiandae! Totam eius quos, incidunt dolores harum
-            alias nihil provident rerum in aspernatur eum, voluptas, doloribus
-            vitae sunt. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Quaerat aliquid corrupti a quidem! Quas, architecto alias ullam
-            error aspernatur harum animi sequi illum, quis optio deleniti ad a
-            ipsa? Labore.
+            Welcome to Building Tenant System, your trusted partner in the world of hassle-free property rentals.
+             At Building Tenant System, we're committed to making the process of renting a house or apartment easier, 
+             more convenient, and secure for both property owners and tenants.
+             Our mission is simple: to redefine the way people find and rent their dream homes. 
+             We believe that everyone deserves a comfortable and stress-free rental experience,
+              and we've built our platform to reflect that commitment.
+              Whether you're a property owner looking for the ideal tenant or a tenant searching for your dream home,
+               Building Tenant System is here to simplify the journey.
           </p>
-          <button>See More</button>
+          <Link to ="/AboutUs">
+          <button>See More</button></Link>
         </div>
       </div>
     </div>

@@ -83,7 +83,7 @@ function Services() {
                 <i class="fa-solid fa-magnifying-glass"></i>
               </button>
             </form>
-            <h2>Filter By Location</h2>
+            {/* <h2>Filter By Location</h2> */}
             {location.map((itemLocation, index) => (
               <div class="leftContainer" key={itemLocation._id}>
                 <div class="lContainer" onClick={() => handleClick(index)}>
@@ -140,7 +140,7 @@ function Services() {
                   <span>
                     Price:{" "}
                     <strong style={{ color: "darkGreen" }}>
-                      {item.price} TZS per month
+                      {item.price} Rs per month
                     </strong>
                   </span>
                   <span>
@@ -168,7 +168,7 @@ function Services() {
                   </div>
                   <span>
                     Uploaded By:{" "}
-                    <strong style={{ color: "Teal" }}>james</strong>
+                    <strong style={{ color: "Teal" }}>{item.username}</strong>
                   </span>
                   <span>
                     Time uploaded:{" "}
@@ -186,8 +186,8 @@ function Services() {
             ))}
           </div>
           <div class="right">
-            <h1>Categories</h1>
-            <h2>Filter By Category</h2>
+            {/* <h1>Categories</h1>
+            <h2>Filter By Category</h2> */}
             {category.map((itemCategory) => (
               <div class="rightContainer" key={itemCategory._id}>
                 {itemCategory.name.map((i) => (
